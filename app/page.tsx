@@ -1,12 +1,10 @@
 import FormContainer from "@/components/FormContainer";
 import { MessageList, columns } from "@/components/messageTable/columns";
 import { DataTable } from "@/components/messageTable/MessageList";
+import axios from "axios";
 
 async function getData() {
-  const res = await fetch("https://localhost/message", {
-    cache: "no-cache",
-  });
-  const data = await res.json();
+  const { data } = await axios.get("http://localhost:3000/message");
   return data.res;
 }
 
