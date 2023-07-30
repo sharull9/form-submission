@@ -9,7 +9,7 @@ async function getData() {
 }
 
 export default async function Home() {
-  const data = await getData();
+  const data: MessageList[] = await getData();
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-4 p-24">
