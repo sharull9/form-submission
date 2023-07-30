@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 async function deleteMessage(id: string) {
-  const res = await fetch(`https://localhost:3000/message/?id=${id}`, {
+  const res = fetch(`/message/?id=${id}`, {
     method: "DELETE",
   });
 }
