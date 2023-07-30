@@ -3,12 +3,9 @@ import { MessageList, columns } from "@/components/messageTable/columns";
 import { DataTable } from "@/components/messageTable/MessageList";
 
 async function getData() {
-  const res = await fetch(
-    "https://form-submission-b3mmlwcqx-sharull9.vercel.app/message",
-    {
-      cache: "no-cache",
-    }
-  );
+  const res = await fetch("https://localhost/message", {
+    cache: "no-cache",
+  });
   const data = await res.json();
   return data.res;
 }
