@@ -14,10 +14,8 @@ import {
 import { prisma } from "@/services/add-to-database";
 
 async function deleteMessage(id: string) {
-  await prisma.message.delete({
-    where: {
-      id: `${id}`,
-    },
+  const res = fetch(`/message/?id=${id}`, {
+    method: "DELETE",
   });
 }
 
