@@ -1,18 +1,10 @@
 import FormContainer from "@/components/FormContainer";
 import { MessageList, columns } from "@/components/messageTable/columns";
 import { DataTable } from "@/components/messageTable/MessageList";
-
-async function getData(): Promise<MessageList[]> {
-  const res = await fetch("/message", {
-    method: "GET",
-    cache: "no-cache",
-  });
-  const data = await res.json();
-  return data.res;
-}
+import { prisma } from "@/services/add-to-database";
 
 export default async function Home() {
-  const data = await getData();
+  const data = await prisma.message.findMany();
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-4 p-24">

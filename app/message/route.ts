@@ -9,21 +9,3 @@ export async function POST(request: Request) {
   addToDB(res.name, res.email, res.message);
   return NextResponse.json({ res });
 }
-
-export async function GET() {
-  const res = await prisma.message.findMany();
-  return NextResponse.json({ res });
-}
-
-export async function DELETE(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const elementId = searchParams.get("id");
-  //@ts-ignore
-  const res = await prisma.message.delete({
-    where: {
-      id: `${elementId}`,
-    },
-  });
-
-  return NextResponse.json({ res });
-}

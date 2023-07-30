@@ -11,10 +11,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { prisma } from "@/services/add-to-database";
 
 async function deleteMessage(id: string) {
-  const res = fetch(`/message/?id=${id}`, {
-    method: "DELETE",
+  await prisma.message.delete({
+    where: {
+      id: `${id}`,
+    },
   });
 }
 
