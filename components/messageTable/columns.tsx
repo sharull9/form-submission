@@ -13,9 +13,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 async function deleteMessage(id: string) {
-  const res = await fetch(`/message/?id=${id}`, {
-    method: "DELETE",
-  });
+  const res = await fetch(
+    `https://form-submission-klqpnkquq-sharull9.vercel.app/message/?id=${id}`,
+    {
+      method: "DELETE",
+    }
+  );
 }
 
 // This type is used to define the shape of our data.

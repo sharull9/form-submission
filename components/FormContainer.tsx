@@ -27,7 +27,7 @@ export default function FormContainer({}: Props) {
 
   const onSubmit: SubmitHandler<formInputs> = async (data) => {
     setIsLoading(true);
-    await fetch("https://localhost:3000/message", {
+    await fetch("https://form-submission-klqpnkquq-sharull9.vercel.app/message", {
       method: "POST",
       body: JSON.stringify(data),
     });
