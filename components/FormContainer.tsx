@@ -27,7 +27,7 @@ export default function FormContainer({}: Props) {
 
   const onSubmit: SubmitHandler<formInputs> = async (data) => {
     setIsLoading(true);
-    await fetch("/message", {
+    await fetch("https://localhost:3000/message", {
       method: "POST",
       body: JSON.stringify(data),
     });

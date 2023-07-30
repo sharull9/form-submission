@@ -3,14 +3,13 @@ import { MessageList, columns } from "@/components/messageTable/columns";
 import { DataTable } from "@/components/messageTable/MessageList";
 
 async function getData(): Promise<MessageList[]> {
-  const res = await fetch("/message", {
+  const res = await fetch("https://localhost:3000/message", {
     method: "GET",
     cache: "no-cache",
   });
   const data = await res.json();
   return data.res;
 }
-
 
 export default async function Home() {
   const data = await getData();
