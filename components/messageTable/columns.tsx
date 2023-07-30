@@ -11,7 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { deleteMessage } from "@/app/page";
+
+async function deleteMessage(id: string) {
+  const res = await fetch(`http://localhost:3000/message/?id=${id}`, {
+    method: "DELETE",
+  });
+}
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
