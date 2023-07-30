@@ -8,7 +8,6 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
-type Props = {};
 
 type formInputs = {
   name: string;
@@ -16,7 +15,7 @@ type formInputs = {
   message: string;
 };
 
-export default function FormContainer({}: Props) {
+export default function FormContainer() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const {
