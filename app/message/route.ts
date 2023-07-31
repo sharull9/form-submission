@@ -1,12 +1,13 @@
 import { addToDB, prisma } from "@/services/add-to-database";
 import { sendMail } from "@/services/send-mail";
 import { NextResponse } from "next/server";
-import { useRouter } from "next/navigation";
+import { revalidateTag } from "next/cache";
 
 export async function POST(request: Request) {
   const res = await request.json();
   sendMail(res.name, res.email, res.message);
   addToDB(res.name, res.email, res.message);
+  revalidateTag("message");
   return NextResponse.json({ res });
 }
 
@@ -24,6 +25,6 @@ export async function DELETE(request: Request) {
       id: `${elementId}`,
     },
   });
-
+  revalidateTag("message");
   return NextResponse.json({ res });
 }

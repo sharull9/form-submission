@@ -25,24 +25,31 @@ export default function FormContainer() {
 
   const onSubmit: SubmitHandler<formInputs> = async (data) => {
     setIsLoading(true);
-    await fetch("/message", {
+    const res = await fetch("/message", {
       method: "POST",
       body: JSON.stringify(data),
     });
-    router.refresh();
+    const rep = await res.json();
+    console.log(rep);
     setIsLoading(false);
+    router.refresh();
   };
   return (
     <form
-      className="flex flex-col gap-4 w-1/2"
+      className="flex flex-col gap-6 w-1/2"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <h1 className="text-slate-800 text-xl">Submit a form</h1>
       <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="name">Name</Label>
+        <Label className="mb-2" htmlFor="name">
+          Name
+        </Label>
         <Input type="Text" {...register("name")} id="name" placeholder="Name" />
       </div>
       <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="email">Email</Label>
+        <Label className="mb-2" htmlFor="email">
+          Email
+        </Label>
         <Input
           type="email"
           {...register("email")}
@@ -51,11 +58,14 @@ export default function FormContainer() {
         />
       </div>
       <div className="grid w-full gap-1.5">
-        <Label htmlFor="message">Your message</Label>
+        <Label className="mb-2" htmlFor="message">
+          Your message
+        </Label>
         <Textarea
           {...register("message")}
           placeholder="Type your message here."
           id="message"
+          className="h-44"
         />
       </div>
       <Button>

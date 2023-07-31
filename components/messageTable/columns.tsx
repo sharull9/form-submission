@@ -8,16 +8,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { prisma } from "@/services/add-to-database";
-
-async function deleteMessage(id: string) {
-  const res = fetch(`/message/?id=${id}`, {
-    method: "DELETE",
-  });
-}
+import { deleteMessage } from "@/app/page";
 
 export type MessageList = {
   id: string;
