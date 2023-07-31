@@ -17,7 +17,6 @@ export async function GET(request: Request) {
 export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url);
   const elementId = searchParams.get("id");
-  //@ts-ignore
   const res = await prisma.message.delete({
     where: {
       id: `${elementId}`,
