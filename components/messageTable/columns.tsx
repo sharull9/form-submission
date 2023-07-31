@@ -10,7 +10,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { deleteMessage } from "@/app/page";
+
+async function deleteMessage(id: string) {
+  const res = await fetch(`/message/?id=${id}`, {
+    method: "DELETE",
+  });
+}
 
 export type MessageList = {
   id: string;

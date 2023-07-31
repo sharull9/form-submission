@@ -2,18 +2,12 @@ import { DataTable } from "@/components/messageTable/MessageList";
 import { columns, MessageList } from "@/components/messageTable/columns";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/services/add-to-database";
-import { revalidateTag } from "next/cache";
-
-export async function deleteMessage(id: string) {
-  const res = await fetch(`/message/?id=${id}`, {
-    method: "DELETE",
-  });
-}
 
 export default async function Home() {
+  const base = getAbsoluteUrl();
   async function getData() {
     // const data: MessageList[] = await prisma.message.findMany();
-    const res = await fetch("http://localhost:3000/message", {
+    const res = await fetch("https://form-submission-psi.vercel.app//message", {
       cache: "no-cache",
       next: {
         tags: ["message"],
@@ -23,7 +17,6 @@ export default async function Home() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return data.res;
   }
-
   const data = await getData();
   return (
     <main className="flex flex-col gap-4 w-1/2">
@@ -38,4 +31,19 @@ export default async function Home() {
       )}
     </main>
   );
+}
+
+export function getProtocol() {
+  const isProd = process.env.VERCEL_ENV === "production";
+  if (isProd) return "https://";
+  return "http://";
+}
+
+export function getAbsoluteUrl() {
+  //get absolute url in server.
+  const protocol = getProtocol();
+  if (process.env.VERCEL_URL) {
+    console.log(`${protocol}${process.env.VERCEL_URL}`);
+    return `${protocol}${process.env.VERCEL_URL}`;
+  }
 }
