@@ -5,13 +5,8 @@ import { prisma } from "@/services/add-to-database";
 
 export default async function Home() {
   async function getData() {
-    // const data: MessageList[] = await prisma.message.findMany();
-    const res = await fetch("https://form-submission-psi.vercel.app/message", {
-      cache: "no-cache",
-    });
-    const data = await res.json();
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return data.res;
+    const data: MessageList[] = await prisma.message.findMany();
+    return data;
   }
   const data = await getData();
   return (

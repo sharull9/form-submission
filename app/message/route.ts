@@ -10,8 +10,6 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
-  // const apires = await request.json();
-  console.log(request);
   const res = await prisma.message.findMany();
   return NextResponse.json({ res });
 }
