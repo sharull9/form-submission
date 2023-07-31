@@ -7,7 +7,7 @@ export default async function Home() {
   const base = getAbsoluteUrl();
   async function getData() {
     // const data: MessageList[] = await prisma.message.findMany();
-    const res = await fetch("https://form-submission-psi.vercel.app//message", {
+    const res = await fetch("https://form-submission-psi.vercel.app/message", {
       cache: "no-cache",
       next: {
         tags: ["message"],
