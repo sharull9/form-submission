@@ -3,8 +3,8 @@ import { MessageList, columns } from "@/components/messageTable/columns";
 import { DataTable } from "@/components/messageTable/MessageList";
 import axios from "axios";
 
-async function getData() {
-  const { data } = await axios.get("http://127.0.0.1:443/message");
+async function getData(req) {
+  const { data } = await axios.get(req.protocol + "://” + req.url + ”/message");
   return data.res;
 }
 
