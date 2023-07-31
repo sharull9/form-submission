@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { prisma } from "@/services/add-to-database";
 
 export default async function Home() {
-  const base = getAbsoluteUrl();
   async function getData() {
     // const data: MessageList[] = await prisma.message.findMany();
     const res = await fetch("https://form-submission-psi.vercel.app/message", {
@@ -31,19 +30,4 @@ export default async function Home() {
       )}
     </main>
   );
-}
-
-export function getProtocol() {
-  const isProd = process.env.VERCEL_ENV === "production";
-  if (isProd) return "https://";
-  return "http://";
-}
-
-export function getAbsoluteUrl() {
-  //get absolute url in server.
-  const protocol = getProtocol();
-  if (process.env.VERCEL_URL) {
-    console.log(`${protocol}${process.env.VERCEL_URL}`);
-    return `${protocol}${process.env.VERCEL_URL}`;
-  }
 }
