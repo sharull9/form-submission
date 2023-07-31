@@ -4,7 +4,7 @@ import { DataTable } from "@/components/messageTable/MessageList";
 import axios from "axios";
 
 async function getData(req: Request) {
-  const { data } = await axios.get(req.protocol + "://” + req.url + ”/message");
+  const { data } = await axios.get(req.protocol + "://" + req.url + "/message");
   return data.res;
 }
 
